@@ -51,6 +51,7 @@ public class PollServer {
 
     @Override
     public void createPoll(PollRequest req, StreamObserver<PollResponse> responseObserver) {
+	System.out.println("Moderator ID: "+req.getModeratorId());
       PollResponse reply = PollResponse.newBuilder().setId(Integer.toString(countId.incrementAndGet(),36)).build();
       responseObserver.onValue(reply);
       responseObserver.onCompleted();

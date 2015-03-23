@@ -1,4 +1,4 @@
-package io.grpc.examples.helloworld;
+package io.grpc.poll.pollservice;
 
 import io.grpc.ServerImpl;
 import io.grpc.stub.StreamObserver;
@@ -51,6 +51,7 @@ public class PollServer {
 
     @Override
     public void createPoll(PollRequest req, StreamObserver<PollResponse> responseObserver) {
+System.out.println(req.getModeratorId());
       PollResponse reply = PollResponse.newBuilder().setId(Integer.toString(countId.incrementAndGet(),36)).build();
       responseObserver.onValue(reply);
       responseObserver.onCompleted();
